@@ -4,6 +4,7 @@ FLOW:
 '''
 
 import os
+import wget
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
@@ -39,7 +40,7 @@ Login_button = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CS
 not_now = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//button[contains(text(), "Not Now")]'))).click()
 not_now2 = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, '//button[contains(text(), "Not Now")]'))).click()
 
-driver.get("https://www.instagram.com/sidbendre")
+driver.get("https://www.instagram.com/katelyn.freebern")
 # searchbox = WebDriverWait(driver,10).until(EC.element_to_be_clickable((By.XPATH, "//input[@placeholder='Search']")))
 # searchbox.clear()
 # keyword = "ursecret_safe"
@@ -67,16 +68,25 @@ for elem in elements:
     if url not in links and 'p' in url.split('/'):
             links.append(url)
             print(url, "\n")
-            
 
+images = []
 
-"""Saving the content of picture in the file"""
-number = new_pictures[0]
-link = new_pictures[1]
+for a in links:
+    driver.get(a)
+    time.sleep(5)
+    img = driver.find_elements(By.TAG_NAME, value='img')
+    img = [i.get_attribute('src') for i in img]
 
-with open(os.path.join(folder, f"Image{number}.jpg"), "wb") as f:
-    
-    
-    f.write(content_of_picture)
-    
+    images.append(img[1])
 
+counter = 0
+
+main_dir = os.getcwd()
+picture_dir = os.path.join(main_dir,
+    '/pictures')
+
+for image in images:
+    save_as = os.path.join(os.getcwd(), str(counter) +
+    '.jpg')
+    wget.download(image, save_as)
+    counter += 1
