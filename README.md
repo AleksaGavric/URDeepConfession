@@ -1,10 +1,18 @@
-# URDeepConfess
+# LEVEL 1: URDeepConfess
 
-Fake confession generator for _ursecret_safe_ account on Instagram.
+Simple fake confession generator for _ursecret_safe_ by _ursecret_safe_. Run through command line
+
+# LEVEL 2: DeepConfess
+
+AI-impersonator sourced from twitter for _ur_secret_safe_.
+
+# LEVEL 3: React webapp DeepTweet
+
+AI-tweet responder in the style of Elon Musk
 
 ## Description
 
-This repocontains two scripts: 
+This repo contains two scripts:
 
 * scraper.py : scrape the data into a .txt format
 
