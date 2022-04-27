@@ -103,11 +103,11 @@ def main():
     insta_handle = "ursecret_safe"
     open_insta_handle(insta_handle)
     
-    urls = scrape_post_urls()
-    save_images_from_urls(urls)
+    #urls = scrape_post_urls()
+    with open("url_safe.txt") as f:
+        save_images_from_urls(f.readlines())
     
     driver.close()
     
 main()
-    
 
